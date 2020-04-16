@@ -2,8 +2,7 @@ on:
   push:
     branches:
       - master
-
-
+      
 jobs:
   build_css:
     runs-on: ubuntu-latest
@@ -17,16 +16,16 @@ jobs:
             submodules: true
 
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/austlii-dark/assets/css
+        run: mkdir -vp /tmp/austlii-dark/css
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.2
         with:
           source: src/style.scss
-          destination: /tmp/austlii-dark/assets/css/style.css
+          destination: /tmp/austlii-dark/css/style.css
 
       - name: Move compiled CSS
-        run: mv /tmp/austlii-dark/assets/css build/
+        run: mv /tmp/austlii-dark/css/style.css build/
 
       - name: Add and Commit changes
         run: |
