@@ -40,10 +40,10 @@ jobs:
         run: mv /tmp/userstyle.css build/
 
       - name: "Check if commit needed"
-        run: "KEEP_RUNNING=$(git status --untracked-files=no --porcelain)"
+        run: "STOP_RUNNING=[[ -z $(git status -uno --porcelain) ]]"
 
       - name: Add and Commit changes
-        if: env.KEEP_RUNNING==0
+        if: env.STOP_RUNNING!=1
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
@@ -51,7 +51,7 @@ jobs:
           git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
-        if: env.KEEP_RUNNING
+        if: env.STOP_RUNNING!=1
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
