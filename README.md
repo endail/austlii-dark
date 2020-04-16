@@ -1,6 +1,6 @@
 # AustLII Dark
 
-![](https://github.com/endail/austlii-dark/workflows/build/badge.svg)
+![](https://github.com/endail/austlii-dark/workflows/build/badge.svg)[https://github.com/endail/austlii-dark/actions?query=workflow%3Abuild]
 
 - Makes [AustLII](http://www.austlii.edu.au/) dark
 
