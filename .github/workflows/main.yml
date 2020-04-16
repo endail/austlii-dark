@@ -40,7 +40,7 @@ jobs:
         run: mv /tmp/userstyle.css build/
 
       - name: Add and Commit changes
-        if: git status --untracked-files=no --porcelain
+        if: [[ -z $(git status --untracked-files=no --porcelain) ]]
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
@@ -48,7 +48,7 @@ jobs:
           git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
-        if: git status --untracked-files=no --porcelain
+        if: [[ -z $(git status --untracked-files=no --porcelain) ]]
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
