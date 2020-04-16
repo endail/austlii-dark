@@ -27,9 +27,9 @@ jobs:
       - name: Add license header
         run: |
           (
-            echo "/*\n";
+            printf "/*\n";
             awk -F"// " '{print $2}' LICENSE;
-            echo "*/\n";
+            printf "*/\n";
             cat /tmp/raw.css;
           ) > /tmp/userstyle.css
 
