@@ -21,11 +21,11 @@ jobs:
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.2
         with:
-          source: src/style.scss
-          destination: /tmp/austlii-dark/css/style.css
+          source: src/userstyle.scss
+          destination: /tmp/austlii-dark/css/userstyle.css
 
       - name: Move compiled CSS
-        run: mv /tmp/austlii-dark/css/style.css build/
+        run: mv /tmp/austlii-dark/css/userstyle.css build/
 
       - name: Add and Commit changes
         run: |
