@@ -16,16 +16,19 @@ jobs:
             submodules: true
 
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/austlii-dark/css
+        run: mkdir -vp /tmp
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.2
         with:
           source: src/userstyle.scss
-          destination: /tmp/austlii-dark/css/userstyle.css
+          destination: /tmp/userstyle.css
+
+      - name: Add license header
+        run: cat LICENSE /tmp/userstyle.css > /tmp/userstyle.css 
 
       - name: Move compiled CSS
-        run: mv /tmp/austlii-dark/css/userstyle.css build/
+        run: mv /tmp/userstyle.css build/
 
       - name: Add and Commit changes
         run: |
