@@ -40,7 +40,7 @@ jobs:
         run: mv /tmp/userstyle.css build/
 
       - name: "Check if commit needed"
-        run: "KEEP_RUNNING=[[ -z $(git status --untracked-files=no --porcelain) ]]"
+        run: "KEEP_RUNNING=$(git status --untracked-files=no --porcelain)"
 
       - name: Add and Commit changes
         if: env.KEEP_RUNNING
