@@ -39,19 +39,14 @@ jobs:
       - name: Move compiled CSS
         run: mv /tmp/userstyle.css build/
 
-      - name: "Check if commit needed"
-        run: "STOP_RUNNING=[[ $(git status -uno --porcelain) ]]"
-
       - name: Add and Commit changes
-        if: env.STOP_RUNNING!=1
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add build/*
-          git commit -m 'Updates compiled CSS files'
+          git diff-index --quiet HEAD || git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
-        if: env.STOP_RUNNING!=1
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
