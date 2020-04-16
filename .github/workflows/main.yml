@@ -39,8 +39,11 @@ jobs:
       - name: Move compiled CSS
         run: mv /tmp/userstyle.css build/
 
+      - name: "Check if commit needed"
+        run: "KEEP_RUNNING=[[ -z $(git status --untracked-files=no --porcelain) ]]"
+
       - name: Add and Commit changes
-        if: [[ -z $(git status --untracked-files=no --porcelain) ]]
+        if: env.KEEP_RUNNING
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
@@ -48,7 +51,7 @@ jobs:
           git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
-        if: [[ -z $(git status --untracked-files=no --porcelain) ]]
+        if: env.KEEP_RUNNING
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
