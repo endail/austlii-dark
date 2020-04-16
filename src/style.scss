@@ -1,0 +1,78 @@
+
+/* Colours */
+$linkColor: #3796cc;
+$textColor: #bbb;
+$darkColor: #111;
+
+
+/* Elements */
+a,
+a:visited,
+a:link,
+a:active,
+a:focus,
+a:hover {
+	color: $linkColor;
+}
+
+body {
+	background-color: $darkColor !important;
+    background-image: none !important;
+	color: $textColor;
+}
+
+header {
+    background-color: $darkColor !important;   
+}
+
+table td,
+table th {
+	background-color: inherit !important;   
+}
+
+
+/* Classes */
+.card {
+    background-color:$darkColor !important;   
+}
+
+.card-title {
+    color: $textColor !important;   
+}
+
+.card li {
+	background-color: inherit !important;   
+}
+
+/* Ids */
+#search-box {
+    color: $darkColor !important;   
+}
+
+#page-content {
+	background-color: $darkColor !important;
+}
+
+#page-main,
+.the-document {
+    background-color: $darkColor !important;
+    padding-right: 10px !important;
+	padding-left: 10px !important;
+}
+
+.the-document ol > li {
+    color: $textColor !important;   
+}
+
+// Tighten up section listing
+.the-document > ul li {
+ 	margin: 0 !important;
+}
+
+.the-document > h3 {
+	margin-bottom: 0 !important;
+}
+
+.the-document > ul li > a:first-child:after {
+    content: ".";
+}
