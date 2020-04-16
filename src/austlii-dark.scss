@@ -23,12 +23,10 @@
 */
 @charset "utf-8";
 
-/* Colours */
 $linkColor: #3796cc;
 $textColor: #bbb;
 $darkColor: #111;
 
-/* Elements */
 a,
 a:visited,
 a:link,
@@ -53,8 +51,6 @@ table th {
 	background-color: inherit !important;   
 }
 
-
-/* Classes */
 .card {
     background-color:$darkColor !important;   
 }
@@ -67,7 +63,6 @@ table th {
 	background-color: inherit !important;   
 }
 
-/* Ids */
 #search-box {
     color: $darkColor !important;   
 }
