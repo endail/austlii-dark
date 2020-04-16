@@ -26,13 +26,12 @@ jobs:
 
       - name: Add license header
         run: |
-          (
+          $(
             echo "/*\n";
             awk -F"// " '{print $2}' LICENSE;
             echo "*/\n";
             cat /tmp/raw.css;
-          )
-          > /tmp/userstyle.css
+          ) > /tmp/userstyle.css
 
       - name: Move compiled CSS
         run: mv /tmp/userstyle.css build/
