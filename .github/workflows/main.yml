@@ -26,7 +26,7 @@ jobs:
 
       - name: Add license header
         run: |
-          $(
+          (
             echo "/*\n";
             awk -F"// " '{print $2}' LICENSE;
             echo "*/\n";
