@@ -43,7 +43,7 @@ jobs:
         run: "KEEP_RUNNING=$(git status --untracked-files=no --porcelain)"
 
       - name: Add and Commit changes
-        if: env.KEEP_RUNNING
+        if: env.KEEP_RUNNING==0
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
