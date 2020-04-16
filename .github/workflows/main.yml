@@ -40,7 +40,7 @@ jobs:
         run: mv /tmp/userstyle.css build/
 
       - name: "Check if commit needed"
-        run: "STOP_RUNNING=[[ -z $(git status -uno --porcelain) ]]"
+        run: "STOP_RUNNING=[[ $(git status -uno --porcelain) ]]"
 
       - name: Add and Commit changes
         if: env.STOP_RUNNING!=1
