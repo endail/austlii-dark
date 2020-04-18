@@ -21,23 +21,23 @@ jobs:
             fetch-depth: 10
             submodules: true
 
-      - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp
+      - name: Ensure dirs exist
+        run: mkdir -vp /tmp; mkdir -vp ./build
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.2
         with:
-          source: src/userstyle.scss
+          source: ./src/userstyle.scss
           destination: /tmp/raw.css
 
       - name: Create UserCSS
-        run: cat src/header.user.css /tmp/raw.css > build/austlii-dark.user.css
+        run: cat ./src/header.user.css /tmp/raw.css > ./build/austlii-dark.user.css
 
       - name: Add and Commit changes
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add build/*
+          git add ./build/*
           git diff-index --quiet HEAD || git commit -m 'userstyle updated'
 
       - name: Push changes
