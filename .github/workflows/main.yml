@@ -30,17 +30,8 @@ jobs:
           source: src/userstyle.scss
           destination: /tmp/raw.css
 
-      - name: Add license header
-        run: |
-          (
-            printf "/*\n";
-            awk -F"// " '{print $2}' LICENSE;
-            printf "*/\n";
-            cat /tmp/raw.css;
-          ) > /tmp/userstyle.css
-
-      - name: Move compiled CSS
-        run: mv /tmp/userstyle.css build/
+      - name: Create UserCSS
+        run: cat src/header.user.css /tmp/raw.css > build/austlii-dark.user.css
 
       - name: Add and Commit changes
         run: |
