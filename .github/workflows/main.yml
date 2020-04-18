@@ -31,7 +31,7 @@ jobs:
           destination: /tmp/raw.css
 
       - name: Create UserCSS
-        run: (cat src/header.user.css /tmp/raw.css) > build/austlii-dark.user.css
+        run: cat src/header.user.css /tmp/raw.css > build/austlii-dark.user.css
 
       - name: Add and Commit changes
         run: |
