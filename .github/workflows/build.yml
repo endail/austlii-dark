@@ -24,14 +24,25 @@ jobs:
       - name: Ensure dirs exist
         run: mkdir -vp /tmp; mkdir -vp ./build
 
-      - name: Compile CSS from SCSS files
+      - name: Compile SCSS to expanded CSS
         uses: gha-utilities/sass-build@v0.2.2
         with:
           source: ./src/userstyle.scss
-          destination: /tmp/raw.css
+          destination: /tmp/austlii-dark.expanded.css
+          outputStyle: expanded
 
-      - name: Create UserCSS
-        run: cat ./src/header.user.css /tmp/raw.css > ./build/austlii-dark.user.css
+      - name: Compile SCSS to compressed CSS
+          uses: gha-utilities/sass-build@v0.2.2
+          with:
+            source: ./src/userstyle.scss
+            destination: /tmp/austlii-dark.compressed.css
+            outputStyle: compressed
+
+      - name: Create expanded UserCSS
+        run: cat ./src/header.user.css /tmp/austlii-dark.expanded.css > ./build/austlii-dark.expanded.user.css
+
+      - name: Create compressed UserCSS
+        run: cat ./src/header.user.css /tmp/austlii-dark.compressed.css > ./build/austlii-dark.user.css
 
       - name: Add and Commit changes
         run: |
