@@ -11,3 +11,4 @@
 - If you are using a UserCSS-compatible style manager such as Stylus, click the button above to install
 - Alternatively, visit the [AustLII Dark page on userstyles.org](https://userstyles.org/styles/149563/austlii-dark)
 - Click 'Install Style'
+- An uncompressed version is available [here](https://github.com/endail/austlii-dark/raw/master/build/austlii-dark.expanded.user.css).
