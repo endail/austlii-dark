@@ -32,11 +32,11 @@ jobs:
           outputStyle: expanded
 
       - name: Compile SCSS to compressed CSS
-          uses: gha-utilities/sass-build@v0.2.2
-          with:
-            source: ./src/userstyle.scss
-            destination: /tmp/austlii-dark.compressed.css
-            outputStyle: compressed
+        uses: gha-utilities/sass-build@v0.2.2
+        with:
+          source: ./src/userstyle.scss
+          destination: /tmp/austlii-dark.compressed.css
+          outputStyle: compressed
 
       - name: Create expanded UserCSS
         run: cat ./src/header.user.css /tmp/austlii-dark.expanded.css > ./build/austlii-dark.expanded.user.css
